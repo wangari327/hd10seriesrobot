@@ -12,32 +12,32 @@ def is_enabled(value, default):
 
 # Bot information
 SESSION = environ.get('SESSION', 'Media_search')
-API_ID = int(environ['API_ID'])
-API_HASH = environ['API_HASH']
-BOT_TOKEN = environ['BOT_TOKEN']
+API_ID = int(environ['API_ID', '5166878'])
+API_HASH = environ['API_HASH', 'fdafb41f9a67f40e34a6c67f47730a92']
+BOT_TOKEN = environ['BOT_TOKEN', '5287030714:AAFOT1fhqmDQpJCA0TCiioac3l3U50M1dlA']
 
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', True))
-PICS = (environ.get('PICS', 'https://i.imgur.com/RjFZcxe.jpg https://i.imgur.com/RRjBoqF.jpg https://i.imgur.com/hdsXwi8.jpg https://i.imgur.com/G8jDBxd.jpg https://i.imgur.com/oHZvutA.jpg')).split()
+PICS = (environ.get('PICS', 'https://te.legra.ph/file/1833c79556e1020eede6a.jpg')).split()
 
 # Admins, Channels & Users
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '0').split()]
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '762308466').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001567908315').split()]
 auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '').split()]
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
-auth_channel = environ.get('AUTH_CHANNEL')
+auth_channel = environ.get('AUTH_CHANNEL', '-1001497295282')
 auth_grp = environ.get('AUTH_GROUP')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
 
 # MongoDB information
-DATABASE_URI = environ.get('DATABASE_URI', "")
-DATABASE_NAME = environ.get('DATABASE_NAME', "Rajappan")
-COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://deez:deeznutts@cluster0.yjwo5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+DATABASE_NAME = environ.get('DATABASE_NAME', "seriesbott")
+COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Hd10tv')
 
 # Others
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', -1001572485766))
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', -1001405282390))
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'prosearchbots')
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)
 IMDB = is_enabled((environ.get('IMDB', "True")), True)
